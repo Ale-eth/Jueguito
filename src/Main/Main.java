@@ -14,7 +14,7 @@ public class Main {
 
         while(personaje1.vida > 0){
             if(personaje1.movimientos >0) {
-                personaje1.Move();
+                personaje1.Movimiento();
                 personaje1.ShowStats();
             }else{
                 personaje1.vida = 0;

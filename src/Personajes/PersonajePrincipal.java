@@ -25,55 +25,59 @@ public class PersonajePrincipal {
         }
 
         // Metodos
-        public void Move(){
+        public void Movimiento(){
             Scanner sc = new Scanner(System.in);
             System.out.println("-> Movete hacia alguna direccion:");
             String direccion = sc.nextLine();
             direccion = direccion.toLowerCase();
 
             if(ValidarMovimiento(direccion)){
-                switch(direccion){
-                    case "arriba":
-                        this.pos_coordY = pos_coordY+1;
-                        System.out.println(this.nombre+", se movio 1 posicion hacia arriba");
-                        this.movimientos--;
-                        break;
-
-                    case "abajo":
-                        this.pos_coordY = pos_coordY-1;
-                        System.out.println(this.nombre+", se movio 1 posicion hacia abajo");
-                        this.movimientos--;
-                        break;
-
-                    case "derecha":
-                        this.pos_coordX = pos_coordX+1;
-                        System.out.println(this.nombre+", se movio 1 posicion hacia la derecha");
-                        this.movimientos--;
-                        break;
-
-                    case "izquierda":
-                        this.pos_coordX = pos_coordX-1;
-                        System.out.println(this.nombre+", se movio 1 posicion hacia la izquierda");
-                        this.movimientos--;
-                        break;
-
-                }
+                Mover(direccion);
             }else{
                 while(!ValidarMovimiento(direccion)) {
                     System.out.println("La direccion no es valida, elije: Arriba Abajo Izquierda o Derecha: ");
                     direccion = sc.nextLine();
                     direccion = direccion.toLowerCase();
                 }
+                Mover(direccion);
             }
 
             System.out.println("----------------------------------");
+        }
+
+        public void Mover(String direccion){
+            switch(direccion){
+                case "arriba":
+                    this.pos_coordY = pos_coordY+1;
+                    System.out.println(this.nombre+", se movio 1 posicion hacia arriba");
+                    this.movimientos--;
+                    break;
+
+                case "abajo":
+                    this.pos_coordY = pos_coordY-1;
+                    System.out.println(this.nombre+", se movio 1 posicion hacia abajo");
+                    this.movimientos--;
+                    break;
+
+                case "derecha":
+                    this.pos_coordX = pos_coordX+1;
+                    System.out.println(this.nombre+", se movio 1 posicion hacia la derecha");
+                    this.movimientos--;
+                    break;
+
+                case "izquierda":
+                    this.pos_coordX = pos_coordX-1;
+                    System.out.println(this.nombre+", se movio 1 posicion hacia la izquierda");
+                    this.movimientos--;
+                    break;
+
+            }
         }
 
         public boolean ValidarMovimiento(String direccion){
         boolean valid = direccion.equals("arriba") || direccion.equals("abajo") || direccion.equals("derecha") || direccion.equals("izquierda");
             return valid;
         }
-
 
         public void Die(){
             System.out.println("Vida: "+this.vida+", te moriste");
